@@ -1,0 +1,598 @@
+<style>
+*{
+font-family:"arial"
+background-repeat:no-repat;
+background-position:center center;
+font-size:11px;
+}
+input{
+padding:1px 1px 1px 4px;
+margin:0px;
+height:22px;
+border-top:1px #899 solid;
+border-bottom:1px #899 solid;
+border-left:1px #899 dotted;
+border-right:1px #899 solid;
+vertical-align:base
+}
+.input2{
+border-right:1px #899 dotted;
+}
+.inp{
+background:#FFF;
+padding:3px;
+width:auto;
+height:22px;
+border-top:1px #899 solid;
+border-bottom:1px #899 solid;
+border-left:1px #899 solid;
+}
+.inp2{
+background:#FFF;
+padding:3px;
+width:auto;
+height:22px;
+border-top:1px #899 solid;
+border-bottom:1px #899 solid;
+border-right:1px #899 solid;
+}
+img{
+vertical-align:middle
+}
+.capa{
+border:1px solid #000;
+padding:2px;
+margin:2px auto 2px 2px;
+width:auto;
+background:#FFF;
+}
+.imgcir{
+position:absolute;
+width:50px;
+height:50px;
+}
+.rgb{
+width:33px;
+height:40px;
+margin:0 2px;
+border:1px dotted #000;
+}
+.syv{
+width:6px;
+height:40px;
+border-top:1px solid #000;
+border-bottom:1px solid #000;
+}
+</style>
+
+<div style="position:absolute;margin:10px;text-align:center;width:100%">
+</div>
+
+<div class="capa" id="prev" style="margin:2px 2px 2px;text-align:center;padding:8px">
+<span class="inp" style="color:#B22">R:</span><input type="text" name="r" id="r" size="6" value="204" onblur="calculo('r')"> &nbsp; &nbsp; &nbsp; 
+<span class="inp" style="color:#2A2">G:</span><input type="text" name="g" id="g" size="6" value="221" onblur="calculo('g')"> &nbsp; &nbsp; &nbsp; 
+<span class="inp" style="color:#22A">B:</span><input type="text" name="b" id="b" size="6" value="238" onblur="calculo('b')"> &nbsp; &nbsp; &nbsp; 
+<span class="inp">H:</span><input type="text" name="h" id="h" size="6" value="0" onblur="calculo('h')" class="input2"><span class="inp2">º</span> &nbsp; &nbsp; &nbsp; 
+<span class="inp">S:</span><input type="text" name="s" id="s" size="6" value="0" onblur="calculo('s')" class="input2"><span class="inp2">%</span> &nbsp; &nbsp; &nbsp;  
+<span class="inp">V:</span><input type="text" name="v" id="v" size="6" value="0" onblur="calculo('v')" class="input2"><span class="inp2">%</span> &nbsp; &nbsp; &nbsp; 
+<span class="inp">S<sub>2</sub>:</span><input type="text" name="s2" id="s2" size="6" value="0" onblur="calculo('s2')"> &nbsp; &nbsp; &nbsp; 
+<span class="inp">L:</span><input type="text" name="l" id="l" size="6" value="0" onblur="calculo('l')"> &nbsp; &nbsp; &nbsp;
+<span class="inp">HEX:</span><input type="text" name="hex" id="hex" size="8" value="#000000" onblur="hex2dec('v')"><input type="button" value="WebSafe" onclick="websafe()" style="padding:5px;border-left:none">
+</div>
+
+<div class="capa" style="float:right;clear:right">
+Tono - Hue (H)
+<div style="position:relative;width:302px;height:302px;">
+<img style="top:0px;left:125px" class="imgcir" src="circulo.gif" id="hue0" onclick="mod_abs('h',0)">
+<img style="top:17px;left:187px" class="imgcir" src="circulo.gif" id="hue30" onclick="mod_abs('h',30)">
+<img style="top:63px;left:233px" class="imgcir" src="circulo.gif" id="hue60" onclick="mod_abs('h',60)">
+<img style="top:125px;left:250px" class="imgcir" src="circulo.gif" id="hue90" onclick="mod_abs('h',90)">
+<img style="top:187px;left:233px" class="imgcir" src="circulo.gif" id="hue120" onclick="mod_abs('h',120)">
+<img style="top:233px;left:187px" class="imgcir" src="circulo.gif" id="hue150" onclick="mod_abs('h',150)">
+<img style="top:250px;left:125px" class="imgcir" src="circulo.gif" id="hue180" onclick="mod_abs('h',180)">
+<img style="top:233px;left:63px" class="imgcir" src="circulo.gif" id="hue210" onclick="mod_abs('h',210)">
+<img style="top:187px;left:17px" class="imgcir" src="circulo.gif" id="hue240" onclick="mod_abs('h',240)">
+<img style="top:125px;left:0px" class="imgcir" src="circulo.gif" id="hue270" onclick="mod_abs('h',270)">
+<img style="top:63px;left:17px" class="imgcir" src="circulo.gif" id="hue300" onclick="mod_abs('h',300)">
+<img style="top:17px;left:63px" class="imgcir" src="circulo.gif" id="hue330" onclick="mod_abs('h',330)">
+
+<div style="position:absolute;width:160px;height:160px;top:68px;left:68px">
+<div style="position:relative;width:100%;height:100%">
+
+<img style="top:53px;left:104px" class="imgcir" src="circulo.gif" id="huemas120" onclick="mod('h','+120')">
+<img style="top:53px;left:5px" class="imgcir" src="circulo.gif" id="huemas240" onclick="mod('h','+240')">
+<img style="top:84px;left:55px" class="imgcir" src="circulo.gif" id="huemas180" onclick="mod('h','+180')">
+
+<img style="left:55px;top:0px" class="imgcir" src="circulo.gif" id="hueact" onclick="mod('h','+0')"></div>
+</div>
+</div>
+</div>
+
+<div class="capa">
+Saturacion - Saturation (S)
+<br>
+<script>
+for(i=0;i<=100;i+=1){
+document.write("<img src=\"no.gif\" class=\"syv\" id=\"sat"+i+"\" onclick=\"mod_abs('s',"+i+")\">")
+}
+</script>
+</div>
+<div class="capa">
+Valor/Brillo - Value/Brightness (V,B)
+<br>
+<script>
+for(i=0;i<=100;i+=1){
+document.write("<img src=\"no.gif\" class=\"syv\" id=\"val"+i+"\" onclick=\"mod_abs('v',"+i+")\">")
+}
+</script>
+</div>
+
+<div class="capa">
+Rojo - Red (R)
+<br>
+<script>
+for(i=0;i<=255;i+=17){
+document.write("<img src=\"no.gif\" class=\"rgb\" id=\"r"+i+"\" onclick=\"mod_abs('r',"+i+")\">")
+}
+</script>
+<span id="safer" style="visibility:hidden;color:#B44">SAFE!</span>
+</div>
+
+<div class="capa">
+Verde - Green (G)
+<br>
+<script>
+for(i=0;i<=255;i+=17){
+document.write("<img src=\"no.gif\" class=\"rgb\" id=\"g"+i+"\" onclick=\"mod_abs('g',"+i+")\">")
+}
+</script>
+<span id="safeg" style="visibility:hidden;color:#4B4">SAFE!</span>
+</div>
+
+<div class="capa">
+Azul - Blue (B)
+<br>
+<script>
+for(i=0;i<=255;i+=17){
+document.write("<img src=\"no.gif\" class=\"rgb\" id=\"b"+i+"\" onclick=\"mod_abs('b',"+i+")\">")
+}
+</script>
+<span id="safeb" style="visibility:hidden;color:#44B">SAFE!</span>
+</div>
+
+<div class="capa">
+Saturacion - Saturation (S<sub>2</sub>)
+<br>
+<script>
+for(i=0;i<=255;i+=2){
+document.write("<img src=\"no.gif\" class=\"syv\" id=\"sst"+i+"\" onclick=\"mod_abs('s2',"+i+")\">")
+}
+</script> error +/- 1
+</div>
+
+<div class="capa">
+Luminosidad - Lightness (L)
+<br>
+<script>
+for(i=0;i<=255;i+=2){
+document.write("<img src=\"no.gif\" class=\"syv\" id=\"lig"+i+"\" onclick=\"mod_abs('l',"+i+")\">")
+}
+</script> error +/- 1
+</div>
+<script>
+function mod(obj,val){
+name=obj
+obj=document.getElementById(obj)
+obj.value=eval(obj.value+val)
+calculo(name)
+}
+function mod_abs(obj,val){
+name=obj
+obj=document.getElementById(obj)
+obj.value=val
+calculo(name)
+}
+
+function calculo(obj){
+data(obj)
+
+obj_r=document.getElementById('r')
+obj_g=document.getElementById('g')
+obj_b=document.getElementById('b')
+obj_h=document.getElementById('h')
+obj_s=document.getElementById('s')
+obj_v=document.getElementById('v')
+obj_s2=document.getElementById('s2')
+obj_l=document.getElementById('l')
+
+
+var r=parseInt(obj_r.value)
+var g=parseInt(obj_g.value)
+var b=parseInt(obj_b.value)
+var h=parseInt(obj_h.value)
+var s=parseInt(obj_s.value)
+var v=parseInt(obj_v.value)
+var s2=parseInt(obj_s2.value)
+var l=parseInt(obj_l.value)
+
+if(!r){r=0}
+if(!g){g=0}
+if(!b){b=0}
+if(!h){h=0}
+if(!s){s=0}
+if(!v){v=0}
+
+//alert(r+','+g+','+b+','+h+','+s+','+v)
+
+
+name=obj
+obj=document.getElementById(obj)
+
+type=calc_type(name)
+
+if(type==1){
+//max y min
+max=r
+if(g>max){max=g}
+if(b>max){max=b}
+min=r
+if(g<min){min=g}
+if(b<min){min=b}
+//calculo de v
+v=Math.floor(max/255*100)
+//calculo de s
+if(max==0){s=0}else{s=Math.floor((1-(min/max))*100)}
+//calculo de h
+if(r==max && g>=b){h=60*(g-b)/(max-min)}
+if(max==r && g<b){h=60*(g-b)/(max-min)+360}
+if(max==g){h=60*(b-r)/(max-min)+120}
+if(max==b){h=60*(r-g)/(max-min)+240}
+if(max==min){h=0}
+//calculo de L
+max/=255
+min/=255
+l=(max+min)/2
+//calculo de s2
+if(0<l && l<=1/2){s2=(max-min)/(2*l)
+}else{s2=(max-min)/(2-2*l)}
+if(l==0){s2=0}
+
+s2*=255
+l*=255
+max*=255
+min*=255
+
+}else if(type==2){
+rgb=hsv2rgb(h,s,v)
+r=rgb[0]
+g=rgb[1]
+b=rgb[2]
+//max y min
+max=r
+if(g>max){max=g}
+if(b>max){max=b}
+min=r
+if(g<min){min=g}
+if(b<min){min=b}
+//calculo de L
+max/=255
+min/=255
+l=(max+min)/2
+
+//calculo de s2
+if(0<l && l<=1/2){s2=(max-min)/(2*l)
+}else{s2=(max-min)/(2-2*l)}
+if(l==0){s2=0}
+
+s2*=255
+l*=255
+max*=255
+min*=255
+}else if(type==3){
+rgb=hsl2rgb(h,s2,l)
+r=rgb[0]
+g=rgb[1]
+b=rgb[2]
+//max y min
+max=r
+if(g>max){max=g}
+if(b>max){max=b}
+min=r
+if(g<min){min=g}
+if(b<min){min=b}
+//calculo de v
+v=Math.floor(max/255*100)
+//calculo de s
+if(max==0){s=0}else{s=Math.floor((1-(min/max))*100)}
+//calculo de h
+if(r==max && g>=b){h=60*(g-b)/(max-min)}
+if(max==r && g<b){h=60*(g-b)/(max-min)+360}
+if(max==g){h=60*(b-r)/(max-min)+120}
+if(max==b){h=60*(r-g)/(max-min)+240}
+if(max==min){h=0}
+}
+
+obj_r.value=Math.floor(r)
+obj_g.value=Math.floor(g)
+obj_b.value=Math.floor(b)
+obj_h.value=Math.floor(h)
+obj_s.value=Math.floor(s)
+obj_v.value=Math.floor(v)
+obj_s2.value=Math.floor(s2)
+obj_l.value=Math.floor(l)
+
+colortotal='#'+dec2hex(r)+dec2hex(g)+dec2hex(b);
+objprev=document.getElementById('prev')
+objprev.style.background=colortotal;
+objtotal=document.getElementById('hex')
+objtotal.value=colortotal;
+
+for(i=0;i<360;i+=30){
+rgb=hsv2rgb(i,s,v)
+objtmp=document.getElementById('hue'+i)
+objtmp.style.background='rgb('+parseInt(rgb[0])+','+parseInt(rgb[1])+','+parseInt(rgb[2])+')'
+if(h==i){objtmp.style.backgroundImage='url(cntr.gif)';objtmp.style.backgroundPosition='center center';}
+}
+
+rgb=hsv2rgb(h,s,v)
+document.all.hueact.style.background='rgb('+parseInt(rgb[0])+','+parseInt(rgb[1])+','+parseInt(rgb[2])+')'
+rgb=hsv2rgb(h+120,s,v)
+document.all.huemas120.style.background='rgb('+parseInt(rgb[0])+','+parseInt(rgb[1])+','+parseInt(rgb[2])+')'
+rgb=hsv2rgb(h+240,s,v)
+document.all.huemas240.style.background='rgb('+parseInt(rgb[0])+','+parseInt(rgb[1])+','+parseInt(rgb[2])+')'
+rgb=hsv2rgb(h+180,s,v)
+document.all.huemas180.style.background='rgb('+parseInt(rgb[0])+','+parseInt(rgb[1])+','+parseInt(rgb[2])+')'
+
+for(i=0;i<=100;i+=1){
+rgb=hsv2rgb(h,i,v)
+objtmp=document.getElementById('sat'+i)
+objtmp.style.background='rgb('+parseInt(rgb[0])+','+parseInt(rgb[1])+','+parseInt(rgb[2])+')'
+if(s==i){objtmp.style.backgroundImage='url(cntr.gif)';objtmp.style.backgroundPosition='center center';}
+}
+
+for(i=0;i<=100;i+=1){
+rgb=hsv2rgb(h,s,i)
+objtmp=document.getElementById('val'+i)
+objtmp.style.background='rgb('+parseInt(rgb[0])+','+parseInt(rgb[1])+','+parseInt(rgb[2])+')' ;
+if(v==i){objtmp.style.backgroundImage='url(cntr.gif)';objtmp.style.backgroundPosition='center center';}
+}
+
+r=parseInt(r)
+g=parseInt(g)
+b=parseInt(b)
+rsafe=false
+gsafe=false
+bsafe=false
+
+
+for(i=0;i<=255;i+=17){
+objtmp=document.getElementById('r'+i)
+objtmp.style.background='rgb('+i+','+g+','+b+')'
+if(r==i){
+objtmp.style.backgroundImage='url(cntr.gif)';
+objtmp.style.backgroundPosition='center center';
+rsafe=true;
+}
+}
+
+for(i=0;i<=255;i+=17){
+objtmp=document.getElementById('g'+i)
+objtmp.style.background='rgb('+r+','+i+','+b+')'
+if(g==i){objtmp.style.backgroundImage='url(cntr.gif)';
+objtmp.style.backgroundPosition='center center';
+gsafe=true;
+}
+}
+
+for(i=0;i<=255;i+=17){
+objtmp=document.getElementById('b'+i)
+objtmp.style.background='rgb('+r+','+g+','+i+')'
+if(b==i){objtmp.style.backgroundImage='url(cntr.gif)';
+objtmp.style.backgroundPosition='center center';
+bsafe=true;
+}
+}
+
+if(rsafe){document.all.safer.style.visibility='visible'}else{document.all.safer.style.visibility='hidden'}
+if(gsafe){document.all.safeg.style.visibility='visible'}else{document.all.safeg.style.visibility='hidden'}
+if(bsafe){document.all.safeb.style.visibility='visible'}else{document.all.safeb.style.visibility='hidden'}
+
+s2_cercano=parseInt(s2/2)*2
+l_cercano=parseInt(l/2)*2
+
+for(i=0;i<=255;i+=2){
+rgb=hsl2rgb(h,i,l)
+objtmp=document.getElementById('sst'+i)
+objtmp.style.background='rgb('+parseInt(rgb[0])+','+parseInt(rgb[1])+','+parseInt(rgb[2])+')' ;
+if(s2_cercano==i){objtmp.style.backgroundImage='url(cntr.gif)';objtmp.style.backgroundPosition='center center';}
+}
+
+for(i=0;i<=255;i+=2){
+rgb=hsl2rgb(h,s2,i)
+objtmp=document.getElementById('lig'+i)
+objtmp.style.background='rgb('+parseInt(rgb[0])+','+parseInt(rgb[1])+','+parseInt(rgb[2])+')';
+if(l_cercano==i){objtmp.style.backgroundImage='url(cntr.gif)';objtmp.style.backgroundPosition='center center';}
+}
+
+
+//objprev=document.getElementById('proceso')
+//objprev.value=proceso;
+}
+
+function data(obj){
+name=obj
+obj=document.getElementById(obj)
+
+valor=parseInt(obj.value);
+if(valor<0){valor=0}
+
+if(name=='r' || name=='g' || name=='b')	{if(valor>255){valor=255}}
+if(name=='h')							{while(valor>359){valor-=360}}
+if(name=='s' || name=='v')				{if(valor>100){valor=100}}
+
+if(!valor){valor=0}
+obj.value=valor
+} 
+
+function calc_type(name){
+switch (name) { 
+    case 'r': 
+    case 'g':
+    case 'b': 
+       type=1 
+       break  
+    case 'h': 
+    case 's':
+    case 'v': 
+       type=2
+       break 
+    case 's2':
+    case 'l': 
+       type=3
+       break 
+    default: 
+       type=0
+}
+return type
+}
+
+function dec2hex(dec)
+{
+var Char_hexadecimales = "0123456789ABCDEF";
+var low = dec % 16;
+var high = (dec - low)/16;
+var hex = "" + Char_hexadecimales.charAt(high) + Char_hexadecimales.charAt(low);
+return hex;
+}
+
+function hex2dec(){
+val0=document.all.hex.value
+val1=parseInt(val0.substr(1,2),16)
+val2=parseInt(val0.substr(3,2),16)
+val3=parseInt(val0.substr(5,2),16)
+document.all.r.value=val1
+document.all.g.value=val2
+document.all.b.value=val3
+calculo('r')
+}
+
+function websafe(){
+val0=document.all.hex.value
+val1=val0.substr(1,1)
+val2=val0.substr(3,1)
+val3=val0.substr(5,1)
+document.all.hex.value='#'+val1+''+val1+''+val2+''+val2+''+val3+''+val3
+
+hex2dec()
+}
+
+
+
+function hsv2rgb(h,s,v){
+while(h>359){h-=360}
+var r,g,b
+s/=100
+v/=100
+
+hi=Math.floor(h/60)
+f=(h/60)-hi
+p=v*(1-s)
+q=v*(1-f*s)
+t=v*(1-(1-f)*s)
+
+
+if(f<0){f=0}
+if(p<0){p=0}
+if(q<0){q=0}
+if(t<0){t=0}
+
+switch (hi) { 
+    case 0: 
+       r=v*255
+	   g=t*255
+	   b=p*255
+       break
+    case 1: 
+       r=q*255
+	   g=v*255
+	   b=p*255
+       break
+    case 2:
+       r=p*255
+	   g=v*255
+	   b=t*255
+       break
+    case 3: 
+       r=p*255
+	   g=q*255
+	   b=v*255
+       break
+    case 4: 
+       r=t*255
+	   g=p*255
+	   b=v*255
+       break
+    case 5: 
+       r=v*255
+	   g=p*255
+	   b=q*255
+       break
+}
+s*=100
+v*=100
+
+
+
+rgb=new Array(r,g,b)
+return rgb
+}
+
+
+
+
+function hsl2rgb(h,s2,l){
+while(h>359){h-=360}
+var r,g,b,q,p,tc,i
+l/=255
+s2/=255
+
+if(l<1/2){q=l*(1+s2)}
+if(l>=1/2){q=l+s2-(l*s2)}
+p=2*l-q
+
+hk=h/360
+
+tr=hk+1/3
+tg=hk
+tb=hk-1/3
+
+tcarr=new Array(tr,tg,tb) 
+for(i=0;i<3;i++){
+tctmp=tcarr[i]
+if(tctmp<0){tctmp=tctmp+1}
+if(tctmp>1){tctmp=tctmp-1}
+
+if(tctmp<1/6){
+tcarr[i]=p+((q-p)*6*tctmp)
+}
+if(1/6<=tctmp && tctmp<1/2){
+tcarr[i]=q
+}
+if(1/2<=tctmp && tctmp<2/3){
+tcarr[i]=p+((q-p)*6*(2/3-tctmp))
+}
+if(tctmp>=2/3){
+tcarr[i]=p
+}
+}
+if(s2==0){tcarr[0]=l;tcarr[1]=l;tcarr[2]=l;}
+
+s2*=255
+l*=255
+
+rgb=new Array(tcarr[0]*255,tcarr[1]*255,tcarr[2]*255)
+return rgb
+}
+
+calculo('r')
+</script>
